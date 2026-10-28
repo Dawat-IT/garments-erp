@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand palette — corporate Bangla RMG ERP, not a generic AI-purple theme */
+  --brand-primary: #0f4c5c;
+  --brand-primary-dark: #0a3540;
+  --brand-primary-light: #1c6a7d;
+  --brand-accent: #e36414;
+  --brand-accent-dark: #b84f0a;
+  --brand-surface: #f7f5f2;
+  --brand-surface-raised: #ffffff;
+  --brand-ink: #1a1a1a;
+  --brand-ink-muted: #5b5850;
+  --brand-border: #e4ded3;
+  --brand-success: #2d6a4f;
+  --brand-success-bg: #e8f3ed;
+  --brand-danger: #9b2226;
+  --brand-danger-bg: #fbeaea;
+  --brand-warning: #bc6c25;
+  --brand-warning-bg: #fdf0e2;
+  --brand-info: #1c6a7d;
+  --brand-info-bg: #e7f1f3;
+
+  --background: var(--brand-surface);
+  --foreground: var(--brand-ink);
+
+  --shadow-color: 30 30 20;
+}
+
+* {
+  border-color: var(--brand-border);
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  color: var(--foreground);
+  background-color: var(--brand-surface);
+  background-image:
+    radial-gradient(circle at 0% 0%, rgba(15, 76, 92, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 100% 0%, rgba(227, 100, 20, 0.04) 0%, transparent 40%),
+    linear-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+  background-size: auto, auto, 28px 28px, 28px 28px;
+  background-attachment: fixed;
+  font-family: var(--font-hind-siliguri), "Segoe UI", sans-serif;
+}
+
+::selection {
+  background-color: rgba(227, 100, 20, 0.22);
+  color: var(--brand-ink);
+}
+
+/* Slim, understated scrollbars that fit a corporate ERP feel */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(15, 76, 92, 0.25);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(15, 76, 92, 0.4);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-display {
+    font-family: var(--font-source-serif), Georgia, "Times New Roman", serif;
+  }
+
+  .paper-surface {
+    background-color: var(--brand-surface-raised);
+    border: 1px solid var(--brand-border);
+    box-shadow: 0 1px 2px rgba(var(--shadow-color) / 0.04), 0 1px 3px rgba(var(--shadow-color) / 0.03);
+  }
+
+  .brand-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(15, 76, 92, 0.3) transparent;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #a2cbd1 transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #a2cbd1;
+    border-radius: 999px;
+  }
+}
+
+/* Landing / enter / dashboard page primitives (deep-teal + accent-orange
+   marketing surfaces). Namespaced with distinct class names so they can
+   coexist with the paper/brand-* utilities used by other app sections. */
+@layer components {
+  .container-erp {
+    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-10;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent-500 text-white shadow-[0_8px_20px_-6px_rgba(227,100,20,0.6)] hover:bg-accent-600 focus-visible:ring-accent-500 active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply btn border border-white/25 bg-white/5 text-white backdrop-blur-sm hover:bg-white/10 hover:border-white/40 focus-visible:ring-white/50 active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply btn border border-ink-200 bg-white text-ink-800 shadow-sm hover:border-teal-300 hover:bg-teal-50 focus-visible:ring-teal-500 active:scale-[0.98];
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-ink-200/70 bg-white shadow-card;
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-source-serif), Georgia, "Times New Roman", serif;
+    letter-spacing: -0.01em;
+  }
+}
